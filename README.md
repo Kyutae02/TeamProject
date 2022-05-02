@@ -22,6 +22,7 @@ Team Project Repository for 2022 OSS Class 01
 ## 팀소개 및 팀원이 맡은 역할 
 > Owner: 한나린
 > - 메뉴 추천 기능과 가격별 검색 기능을 담당하고 있다.
+> 
 > Contributer: 한규태
 > - 조회 기능을 구현하는 것을 담당하고 있다.
 >
