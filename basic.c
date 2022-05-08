@@ -35,8 +35,46 @@ int createMenu(Menu *m)
  int len = strlen(m->food);
  m->food[--len] = '\0';
  printf("가격은? ");
- scanf("%d", m->price);
+ scanf("%d", &m->price);
  printf("판매 부스는? ");
  scanf("%s", m->booth);
+
+ return 1;
+}
+
+void listMenu(Menu *m, int count)
+{
+ for(int i = 0; i < count; i++)
+ {
+  if(m[i].price == -1) continue;
+  printf("========== %d ==========\n", i+1);
+  readMenu(p[i]);
+  printf("========================\n");
+ }
+}
+
+int selectDataNum(Menu *m, int count)
+{
+ int selec;
+ listMenu(m, count);
+ printf("번호는(취소 : 0)? ");
+ scanf("%d", &selec);
+
+ return selec;
+}
+
+int updateMenu(Menu *m)
+{
+ printf("새로운 메뉴 이름은? ");
+ getchar();
+ fgets(m->food, sizeof(m->food), stdin);
+ int len = strlen(m->food);
+ m->food[--len] = '\0';
+ printf("새로운 메뉴의 가격은? ");
+ scanf("%d", &m->price);
+ printf("새로운 메뉴의 판매 부스는? ");
+ scanf("%s", m->booth);
+
+ return 1;
 }
 
