@@ -11,7 +11,8 @@ int loadData(Menu *m)
 
  fp = fopen("Product.txt","rt");
  if(fp==NULL) printf("=>파일 없음\n");
- else{
+ else
+{
  for(;count<100;count++)
  {
  fscanf(fp,"%[^\n]s.",m[count].food);
@@ -21,8 +22,21 @@ int loadData(Menu *m)
  }
  fclose(fp);
  printf("=>로딩 성공!");
-printf("%d",count);
+ printf("%d",count);
 }
  return count;
+}
+
+int createMenu(Menu *m)
+{
+ printf("메뉴 이름은? ");
+ getchar();
+ fgets(m->food, sizeof(m->food), stdin);
+ int len = strlen(m->food);
+ m->food[--len] = '\0';
+ printf("가격은? ");
+ scanf("%d", m->price);
+ printf("판매 부스는? ");
+ scanf("%s", m->booth);
 }
 
