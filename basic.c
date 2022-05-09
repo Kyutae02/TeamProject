@@ -31,16 +31,16 @@ int createMenu(Menu *m)
 }
 
 void readMenu(Menu m){
-    printf("%-8s %5d원 %4s\n",m.food,m.price,m.booth);
+    printf("%s %5d원 %s\n",m.food,m.price,m.booth);
 }
+
 void listMenu(Menu *m, int count)
 {
  for(int i = 0; i < count; i++)
  {
   if(m[i].price == -1) continue;
-  printf("========== %d ==========\n", i+1);
+  printf("%d ", i+1);
   readMenu(m[i]);
-  printf("========================\n");
  }
 }
 
@@ -99,30 +99,10 @@ int deleteMenu(Menu *m)
     return 0;
 }
 
-int loadData(Menu *m)
+void saveData(Menu *m, int count)
 {
- int count = 0;
- FILE *fp;
-
- fp = fopen("Product.txt","rt");
- if(fp==NULL) printf("=>파일 없음\n");
- else
-{
- for(;count<100;count++)
- {
- fscanf(fp,"%[^\n]s.",m[count].food);
- if(feof(fp)) break;
- fscanf(fp,"%d",&m[count].price);
- fscanf(fp,"%[^\n]s",m[count].booth);
- }
- fclose(fp);
- printf("=>로딩 성공!");
- printf("%d",count);
+ return;
 }
- return count;
-}
-
-void saveData(Menu *m, int count);
 
 
 
