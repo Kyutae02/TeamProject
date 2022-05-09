@@ -23,9 +23,9 @@ int main(void){
 			}
 		}
 
-        if(menu == 1) listProduct(slist,curcount); 
+        if(menu == 1) listMenu(slist,curcount); 
         else if (menu == 2) {
-            count+=createProduct(&slist[curcount++]); 
+            count+=createMenu(&slist[curcount++]); 
         }
         else if (menu == 3) {
             int no=selectDataNo(slist, curcount);
@@ -33,7 +33,7 @@ int main(void){
                 printf("=>취소됨!");
                 continue;
             }
-            updateProduct(&slist[no-1]);
+            updateMenu(&slist[no-1]);
         }
         else if (menu == 4) {
             int no=selectDataNo(slist, curcount);
@@ -44,8 +44,8 @@ int main(void){
             int deleteok;
             printf("정말로 삭제하시겠습니까?(삭제:1)");
             scanf("%d",&deleteok);
-            if(deleteok == 1){
-                if(deleteProduct(&slist[no-1])) count --;       
+            if(deleteok == 1){````
+                if(deleteMenu(&slist[no-1])) count --;       
            	 } 
         }
 	    else if (menu == 5){
