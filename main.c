@@ -15,19 +15,19 @@ int main(void){
     while (1){
         menu = selectMenu();
         getchar();
-        if(menu == 0) break;
-        if(menu == 1 || menu ==3 || menu == 4){	
+        if(menu == EXIT) break;
+        if(menu == CHECK || menu ==MODIFY || menu == DELETE){	
 		    if (count==0){ 
                 printf(" 데이터가 없습니다!\n");
 			    continue;
 			}
 		}
 
-        if(menu == 1) listMenu(slist,curcount); 
-        else if (menu == 2) {
+        if(menu == CHECK) listMenu(slist,curcount); 
+        else if (menu == ADD) {
             count+=createMenu(&slist[curcount++]); 
         }
-        else if (menu == 3) {
+        else if (menu == MODIFY) {
             int no=selectDataNo(slist, curcount);
             if(no==0){
                 printf("=>취소됨!");
@@ -35,7 +35,7 @@ int main(void){
             }
             updateMenu(&slist[no-1]);
         }
-        else if (menu == 4) {
+        else if (menu == DELETE) {
             int no=selectDataNo(slist, curcount);
             if(no==0){
                 printf("=>취소됨!");
@@ -44,7 +44,7 @@ int main(void){
             int deleteok;
             printf("정말로 삭제하시겠습니까?(삭제:1)");
             scanf("%d",&deleteok);
-            if(deleteok == 1){````
+            if(deleteok == 1){
                 if(deleteMenu(&slist[no-1])) count --;       
            	 } 
         }
