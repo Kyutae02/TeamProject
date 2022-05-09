@@ -92,7 +92,12 @@ int loadData(Menu *m)
  return count;
 }
 
-int deleteMenu(Menu *m);
+int deleteMenu(Menu *m)
+{
+    m->price=-1;
+    printf("==> 삭제됨!\n");
+    return 0;
+}
 
 int loadData(Menu *m)
 {
