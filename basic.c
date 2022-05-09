@@ -74,7 +74,7 @@ int loadData(Menu *m)
  int count = 0;
  FILE *fp;
 
- fp = fopen("Product.txt","rt");
+ fp = fopen("Menu.txt","rt");
  if(fp==NULL) printf("=>파일 없음\n");
  else
 {
