@@ -17,93 +17,110 @@ int selectButton()
 
 int createMenu(Menu *m)
 {
- printf("메뉴 이름은? ");
- getchar();
- fgets(m->food, sizeof(m->food), stdin);
- int len = strlen(m->food);
- m->food[--len] = '\0';
- printf("가격은? ");
- scanf("%d", &m->price);
- printf("판매 부스는? ");
- scanf("%s", m->booth);
+    printf("메뉴 이름은? ");
+    getchar();
+    fgets(m->food, sizeof(m->food), stdin);
+    int len = strlen(m->food);
+    m->food[--len] = '\0';
+    do
+    {
+        printf("가격은? ");
+        scanf("%d", &m->price);
+    } while (m->price < 0);
+    printf("판매 부스는? ");
+    scanf("%s", m->booth);
 
- return 1;
+    return 1;
 }
 
-void readMenu(Menu m){
-    printf("%s %5d원 %s\n",m.food,m.price,m.booth);
+void readMenu(Menu m)
+{
+    printf("%s %5d원 %s\n", m.food, m.price, m.booth);
 }
 
 void listMenu(Menu *m, int count)
 {
- for(int i = 0; i < count; i++)
- {
-  if(m[i].price == -1) continue;
-  printf("%d ", i+1);
-  readMenu(m[i]);
- }
+    printf("\n======== 메뉴판 ========\n");
+    for (int i = 0; i < count; i++)
+    {
+        if (m[i].price == -1)
+            continue;
+        printf("%2d ", i + 1);
+        readMenu(m[i]);
+    }
+    printf("\n");
 }
 
 int selectDataNum(Menu *m, int count)
 {
- int selec;
- listMenu(m, count);
- printf("번호는(취소 : 0)? ");
- scanf("%d", &selec);
+    int selec;
+    listMenu(m, count);
+    printf("번호는(취소: 0)? ");
+    scanf("%d", &selec);
 
- return selec;
+    return selec;
 }
 
 int updateMenu(Menu *m)
 {
- printf("새로운 메뉴 이름은? ");
- getchar();
- fgets(m->food, sizeof(m->food), stdin);
- int len = strlen(m->food);
- m->food[--len] = '\0';
- printf("새로운 메뉴의 가격은? ");
- scanf("%d", &m->price);
- printf("새로운 메뉴의 판매 부스는? ");
- scanf("%s", m->booth);
+    printf("새로운 메뉴의 이름은? ");
+    getchar();
+    fgets(m->food, sizeof(m->food), stdin);
+    int len = strlen(m->food);
+    m->food[--len] = '\0';
+    do
+    {
+        printf("새로운 메뉴의 가격은? ");
+        scanf("%d", &m->price);
+    } while (m->price < 0);
+    printf("새로운 메뉴의 판매 부스는? ");
+    scanf("%s", m->booth);
 
- return 1;
-}
-
-int loadData(Menu *m)
-{
- int count = 0;
- FILE *fp;
-
- fp = fopen("Product.txt","rt");
- if(fp==NULL) printf("=>파일 없음\n");
- else
-{
- for(;count<100;count++)
- {
- fscanf(fp,"%[^\n]s.",m[count].food);
- if(feof(fp)) break;
- fscanf(fp,"%d",&m[count].price);
- fscanf(fp,"%[^\n]s",m[count].booth);
- }
- fclose(fp);
- printf("=>로딩 성공!");
- printf("%d",count);
-}
- return count;
+    return 1;
 }
 
 int deleteMenu(Menu *m)
 {
-    m->price=-1;
-    printf("==> 삭제됨!\n");
+    m->price = -1;
+    printf("=> 삭제됨!\n");
     return 0;
+}
+
+int loadData(Menu *m)
+{
+    int count = 0;
+    FILE *fp;
+
+    fp = fopen("Product.txt", "rt");
+    if (fp == NULL)
+        printf("=> 파일 없음\n");
+    else
+    {
+        for (; count < 100; count++)
+        {
+            fgets(m->food, 40, fp);
+            m->food[strlen(m->food)-1] = '\0';
+            if (feof(fp))
+                break;
+            fscanf(fp, "%d", &m[count].price);
+            fgets(m->booth, 30, fp);
+            m->booth[strlen(m->booth)-1] = '\0';
+        }
+        fclose(fp);
+        printf("=> 로딩 성공!\n");
+        printf("%d개의 데이터를 찾았습니다!\n", count);
+    }
+    return count;
 }
 
 void saveData(Menu *m, int count)
 {
- return;
+    FILE *fp;
+    fp = fopen("Product.txt", "wt");
+    for (int i = 0; i < count; i++)
+    {
+        fprintf(fp, "%s\n%d\n%s\n", m[i].food, m[i].price, m[i].booth);
+    }
+    fclose(fp);
 }
-
-
-
 
