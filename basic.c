@@ -98,13 +98,13 @@ int loadData(Menu *m)
     {
         for (; count < 100; count++)
         {
-            fgets(m->food, 40, fp);
-            m->food[strlen(m->food)-1] = '\0';
+            fgets(m[count].food, 40, fp);
+            m[count].food[strlen(m[count].food)-1] = '\0';
             if (feof(fp))
                 break;
-            fscanf(fp, "%d", &m[count].price);
-            fgets(m->booth, 30, fp);
-            m->booth[strlen(m->booth)-1] = '\0';
+            fscanf(fp, "%d\n", &m[count].price);
+            fgets(m[count].booth, 30, fp);
+            m[count].booth[strlen(m[count].booth)-1] = '\0';
         }
         fclose(fp);
         printf("=> 로딩 성공!\n");
