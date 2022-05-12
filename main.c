@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "basic.h"
+#include "option.h"
 
 int main(void)
 {
@@ -69,6 +70,10 @@ int main(void)
                 printf("데이터가 없습니다!\n");
             else
                 saveData(slist, curcount);
+        }
+	else if(menu == SEARCH) 
+	{
+            searchMenu(slist, curcount);
         }
     }
     printf("\n*** 종료됨! ***\n");
