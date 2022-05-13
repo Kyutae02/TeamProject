@@ -28,3 +28,20 @@ void searchMenu(Menu *m, int count)
     }
 }
 
+void randomMenu(Menu *m, int count)
+{
+    int randnum, check;
+    randnum = rand() % count;
+    printf("메뉴를 추천 받으시겠습니까(예: 1, 아니오: 0)? ");
+    scanf("%d", &check);
+    if (check == 1)
+    {
+        printf("추천 메뉴 : ");
+        readMenu(m[randnum]);
+    }
+    else if (check == 0)
+    {
+        printf("=> 취소됨!\n");
+    }
+}
+
