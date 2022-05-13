@@ -75,6 +75,10 @@ int main(void)
 	{
             searchMenu(slist, curcount);
         }
+	else if (menu == RANDOM)
+        {
+            randomMenu(slist, curcount);
+        }
     }
     printf("\n*** 종료됨! ***\n");
 

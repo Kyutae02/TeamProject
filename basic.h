@@ -8,7 +8,7 @@
 #define DELETE 4
 #define SAVE 5
 #define SEARCH 6
-#define PRICE 7
+#define RANDOM 7
 #define EXIT 0
 
 typedef struct {
