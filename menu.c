@@ -85,7 +85,7 @@ void showPriceMenu(Menu *m, int button, int count)
     }
 }
 
-void showBoothMenu(m,button,count)
+void showBoothMenu(Menu *m,int button,int count)
 {
     if(button = BOOTH)
     {
