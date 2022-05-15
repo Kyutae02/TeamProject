@@ -30,7 +30,7 @@ int showMenu()
 
 void showAllMenu(Menu *m,int button,int count)
 {
-    if(button = ALL)
+    if(button == ALL)
     {
     printf("\n======== 전체 메뉴판 ========\n");
     for (int i = 0; i < count; i++)
@@ -46,11 +46,11 @@ void showAllMenu(Menu *m,int button,int count)
 
 void showPriceMenu(Menu *m, int button, int count)
 {
-    if(button = PRICE)
+    if(button == PRICE)
     {
         int price;
-        printf("가격대를 입력하세요 (3000,4000,5000)");
-        scanf("%d",price);
+        printf("가격대를 입력하세요 (든든한동, fryfry, 따스한동) ");
+        scanf("%d",&price);
         printf("\n======== 가격대별 메뉴판 ========\n");
         for (int i = 0; i < count; i++)
         {   
@@ -87,9 +87,9 @@ void showPriceMenu(Menu *m, int button, int count)
 
 void showBoothMenu(Menu *m,int button,int count)
 {
-    if(button = BOOTH)
+    if(button == BOOTH)
     {
-        char booth;
+        char booth[40];
         printf("부스를 입력하세요 (3000,4000,5000)");
         scanf("%s",booth);
         printf("\n======== 부스별 메뉴판 ========\n");
@@ -97,7 +97,7 @@ void showBoothMenu(Menu *m,int button,int count)
         {
             if (m[i].price == -1)
                 continue;
-            if (strstr(m[i].food, booth))
+            if (strstr(m[i].booth, booth))
             {
                 printf("%2d ", i + 1);
                 readMenu(m[i]);

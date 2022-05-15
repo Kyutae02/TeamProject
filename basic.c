@@ -1,5 +1,5 @@
 #include "basic.h"
-
+#include "menu.h"
 int selectButton()
 {
     int button;
@@ -29,7 +29,7 @@ int createMenu(Menu *m)
         printf("가격은? ");
         scanf("%d", &m->price);
     } while (m->price < 0);
-    printf("판매 부스는? (든든한동, fryfry, 따스한동)");
+    printf("판매 부스는 (든든한동, fryfry, 따스한동)? ");
     scanf("%s", m->booth);
 
     return 1;
